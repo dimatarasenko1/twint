@@ -88,9 +88,9 @@ def _output(obj, output, config, **extra):
             logme.debug(__name__ + ':_output:Lowercase:tweet')
             obj.username = obj.username.lower()
             author_list.update({obj.username})
-            for dct in obj.mentions:
-                for key, val in dct.items():
-                    dct[key] = val.lower()
+            # for dct in obj.mentions:
+            #     for key, val in dct.items():
+            #         dct[key] = val.lower()
             for i in range(len(obj.hashtags)):
                 obj.hashtags[i] = obj.hashtags[i].lower()
             for i in range(len(obj.cashtags)):
@@ -106,7 +106,7 @@ def _output(obj, output, config, **extra):
                 logme.debug(__name__ + ':_output:CSV')
             except Exception as e:
                 logme.critical(__name__ + ':_output:CSV:Error:' + str(e))
-                print(str(e) + " [x] output._output")
+                print(str(e) + " [x] output._output:CSV")
         elif config.Store_json:
             write.Json(obj, config)
             logme.debug(__name__ + ':_output:JSON')
