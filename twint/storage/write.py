@@ -55,6 +55,8 @@ def Csv(obj, config):
     dialect = 'excel-tab' if 'Tabs' in config.__dict__ else 'excel'
     if obj.lang != "en":
         return
+    if obj.likes_count < 50:
+        return
     if not (os.path.exists(base)):
         with open(base, "w", newline='', encoding="utf-8") as csv_file:
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames, dialect=dialect)
